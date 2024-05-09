@@ -5,13 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-        const a = prompt('Entrez un premier nombre')
-        const b = prompt('Entrez un second nombre')
 
-        const result = a * b
-        if (result >= 0) {
-            console.log(`${a}x${b}=${result} est positif`) 
+        const moyenne =  (notes) => {
+            let sum = 0
+            for (let note of notes) {
+                sum = sum + note
+            }
+            return sum / notes.length
         }
+
+        class Student {
+            ecole = 'Jule ferry'
+
+            constructor (firstname, lastname) {
+                this.firstname = firstname
+                this.lastname = lastname
+            }
+
+            setNotes (notes) {
+                this.notes = notes
+            }
+
+            canPass () {
+                return moyenne(this.notes) >= 10
+            }
+        }
+
+        const john = new Student('John', 'Doe')
+        const jane = new Student('Jane', 'Doe')
+        john.setNotes([10, 10, 9])
+        jane.setNotes([15, 18, 19])
+        console.log(john, jane)
+        console.log(moyenne(jane.notes))
+        console.log(john.canPass(), jane.canPass())
     </script>
 </head>
 <body>
